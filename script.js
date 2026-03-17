@@ -899,9 +899,8 @@ const projectRegistry = {
     ],
     links: [
       {
-        label: "Open local slice planner",
-        localPreviewPath: "/app",
-        localPreviewPort: "8000",
+        label: "Open slice planner",
+        href: "https://akhularv.github.io/Allen-Atlas-3d-Brain-Slice-Visualizer/",
       },
     ],
     steps: [
