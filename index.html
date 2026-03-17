@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Akhul Arvind | Computational Neurobiology + ML Systems</title>
+  <meta name="description"
+    content="Research portfolio of Akhul Arvind, featuring computational neurobiology, neural decoding, scientific tooling, and interpretable machine learning systems." />
+  <meta name="theme-color" content="#0f181f" />
+  <meta property="og:title" content="Akhul Arvind | Computational Neurobiology + ML Systems" />
+  <meta property="og:description"
+    content="Research portfolio of Akhul Arvind, featuring computational neurobiology, neural decoding, scientific tooling, and interpretable machine learning systems." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="icon"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23ff8f5c'/%3E%3Cpath d='M18 46 28 18h8l10 28h-7l-2-6H27l-2 6h-7Zm11-12h6l-3-10-3 10Z' fill='%230f181f'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="./styles.css?v=30" />
+</head>
+
+<body>
+  <div class="page-atmosphere" aria-hidden="true">
+    <canvas id="constellation-canvas"></canvas>
+    <div class="page-atmosphere__veil"></div>
+    <div class="page-atmosphere__grain"></div>
+  </div>
+  <div class="page-shell">
+    <div class="page-biology" id="neuron-background" aria-hidden="true">
+      <div class="page-biology__layer page-biology__layer--hero"></div>
+      <div class="page-biology__layer page-biology__layer--mid"></div>
+      <div class="page-biology__layer page-biology__layer--lower"></div>
+    </div>
+    <header class="site-header">
+      <a class="brand" href="#top">
+        <span class="brand-mark">A</span>
+        <span class="brand-copy">
+          <strong>Akhul Arvind</strong>
+          <span>Computational Neurobiologist + ML System Designer</span>
+        </span>
+      </a>
+      <nav class="site-nav" aria-label="Primary">
+        <a href="#work">Work</a>
+        <a href="#future">Future</a>
+        <a href="https://github.com/akhularv" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/akhul-arvind-235615287" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:akhularvind@gmail.com">Contact</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy">
+          <div class="hero-brain" aria-hidden="true">
+            <div class="hero-brain__halo"></div>
+            <div class="hero-brain__image"></div>
+          </div>
+          <div class="hero-copy__content">
+            <p class="eyebrow">Nice to meet you!</p>
+            <h1>Bridging the gap between Neurobiology and Modern Tech.</h1>
+            <p class="lede">
+              Hi! My name is Akhul and I am a 3rd Year Neurobiology/Machine
+              Learning Student at UCSD. I am working in the intersection of
+              computational neurobiology, machine learning, and brain computer
+              interfaces.<br><br>My biggest interest in this world is the human brain:
+              How does it encode information? How can it receive encoded information?
+              How is it truly computing to provide us a conscious experience?
+            </p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="https://github.com/akhularv">View GitHub</a>
+              <a class="button button-secondary" href="#work">See featured work</a>
+            </div>
+            <ul class="signal-list" aria-label="Areas of focus">
+              <li>Adaptive interfaces</li>
+              <li>BCI-adjacent interaction design</li>
+              <li>Applied ML and scientific tooling</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="hero-stage">
+          <section class="composer-card" aria-labelledby="composer-title">
+            <div class="composer-topline">
+              <div class="composer-badge">
+                <span class="status-dot"></span>
+                <span id="composer-scene-label">Predictive text overlay study</span>
+              </div>
+              <div class="composer-status">
+                <span class="composer-status-pill" id="decoder-mode">Intent fusion</span>
+                <span class="composer-status-pill composer-status-pill-quiet" id="certainty-pill">94%</span>
+              </div>
+            </div>
+            <div class="composer-window">
+              <div class="composer-window__glow" aria-hidden="true"></div>
+              <div class="suggestion-row" id="suggestion-row" aria-live="polite"></div>
+              <div class="composition-line">
+                <div class="composition-heading">
+                  <span class="composition-label">Live composition</span>
+                  <span class="composition-mode" id="composition-mode">Overlay decode</span>
+                </div>
+                <div class="composition-text" aria-live="polite">
+                  <span id="composition-output">future communication should feel lighter</span>
+                  <span id="ghost-output" class="composition-ghost"> for constrained users</span>
+                  <span class="composition-caret" aria-hidden="true"></span>
+                </div>
+              </div>
+              <div class="telemetry-grid" id="telemetry-grid" aria-label="Decoder telemetry"></div>
+              <div class="decoder-trace">
+                <div class="decoder-trace__meta">
+                  <span class="decoder-trace__label">Decoder trace</span>
+                  <span class="decoder-trace__caption" id="decoder-caption">Semantic confidence wave</span>
+                </div>
+                <svg id="decoder-sparkline" viewBox="0 0 320 72" aria-hidden="true"></svg>
+              </div>
+              <div class="keyboard-shell">
+                <div class="keyboard-shell__header">
+                  <span>Letter field</span>
+                  <span id="keyboard-caption">confidence map</span>
+                </div>
+                <div class="keyboard-grid" id="keyboard-grid" aria-labelledby="composer-title"></div>
+              </div>
+              <div class="utility-row">
+                <button type="button" class="utility-pill is-space" data-action="space">space</button>
+                <button type="button" class="utility-pill" data-action="backspace">backspace</button>
+                <button type="button" class="utility-pill is-confirm" data-action="confirm">commit</button>
+              </div>
+            </div>
+            <div class="composer-footnote">
+              <h2 id="composer-title">A live neural signal adaptive communication console</h2>
+              <p>
+                How BCI can be used to create seamless communication. A constantly adapting keyboard and suggested word
+                panel textbox popup console, organized by specific brain states and neural responses.
+              </p>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section class="metrics-band" aria-label="Highlights">
+        <article>
+          <span class="metric">01</span>
+          <p>I start by reading papers, studying architectures, and identifying the real unsolved problem before I
+            build.</p>
+        </article>
+        <article>
+          <span class="metric">02</span>
+          <p>I design tools by mapping the full constraint space: user needs, technical limits, model behavior, and
+            where existing systems break.</p>
+        </article>
+        <article>
+          <span class="metric">03</span>
+          <p>My projects are living systems. I build them to evolve through testing, refinement, and new ideas over
+            time.</p>
+        </article>
+      </section>
+
+      <section class="section-heading" id="work">
+        <p class="eyebrow">Featured work</p>
+        <h2>My Work</h2>
+      </section>
+
+      <section class="project-grid">
+        <article class="project-card project-card-featured" data-project-id="slice-platform" tabindex="0" role="button"
+          aria-expanded="false">
+          <div class="project-header">
+            <p class="project-type">Experimental Neurobiology</p>
+            <h3>Multi-Electrode Array Organotypic Slice Recordings</h3>
+          </div>
+          <p>
+            At the Salk Institute Computational Neurobiology Lab, I designed this
+            project to investigate the real electrophysiological and morphological
+            changes that happen in thalamocortical circuits after maternal immune
+            activation treatment. I used RNA seq analysis and paper based
+            research to figure out the ideal antibodies for labeling these
+            circuits, the ideal slice angle to preserve them, and the procedure
+            needed to keep developing mouse brain tissue alive in vitro. I also
+            designed the broader data collection strategy and am now building
+            toward machine learning based analysis as the project enters its
+            first data collection phase.
+          </p>
+          <ul class="tag-row">
+            <li>Thalamocortical circuits</li>
+            <li>Organotypic culture</li>
+            <li>Antibody strategy</li>
+            <li>ML ready analysis</li>
+          </ul>
+          <div class="project-notes">
+            <p>
+              <strong>The jist:</strong> Building the full system needed to
+              capture circuit level change, not just measure pieces of it
+            </p>
+          </div>
+          <div class="project-action">
+            <span class="project-view-btn">View Project &rarr;</span>
+          </div>
+        </article>
+
+        <article class="project-card" data-project-id="bayesian-vae" tabindex="0" role="button" aria-expanded="false">
+          <div class="project-header">
+            <p class="project-type">Neural Decoding System</p>
+            <h3>Perceptogram: Bayesian VAE Upgrade</h3>
+          </div>
+          <p>
+            In collaboration with Simon Fei from the De Sa Lab, I took an EEG
+            decoding framework that originally relied on standard latent
+            regression and was largely specific to individual subjects, then
+            pushed it toward a more generalizable cross subject approach. The
+            system combines variational autoencoders with Bayesian learning,
+            which better matches the biological variability and unpredictability
+            of EEG signals rather than forcing the model into a cleaner signal
+            than reality gives us. Right now, I am doing post hoc work to
+            understand how the prior weight matrix is shaped by the first eight
+            participants, and how adding a ninth participant changes the model's
+            internal structure through weight shifts and perturbation analysis.
+          </p>
+          <ul class="tag-row">
+            <li>Probabilistic decoding</li>
+            <li>Variational autoencoders</li>
+            <li>Hierarchical Bayes</li>
+            <li>Cross subject generalization</li>
+          </ul>
+          <div class="project-notes">
+            <p>
+              <strong>The jist:</strong> Trying to make neural decoding
+              generalize without pretending biology is cleaner than it is
+            </p>
+          </div>
+          <div class="project-action">
+            <span class="project-view-btn">View Project &rarr;</span>
+          </div>
+        </article>
+
+        <article class="project-card" data-project-id="cross-species-vae" tabindex="0" role="button"
+          aria-expanded="false">
+          <div class="project-header">
+            <p class="project-type">Machine Learning System</p>
+            <h3>Cross Species Treatment Effect VAE</h3>
+          </div>
+          <p>
+            This project at the Salk Institute aims to understand the mechanistic
+            biology behind maternal immune activation by analyzing RNA seq data
+            through a VAE based network. The model encodes the signal across
+            separate latent spaces for treatment, biological structure, and batch
+            effects, then learns to reconstruct the original data through the
+            decoder. By perturbing the latent nodes and linking them back to gene
+            ontology and broader biological concepts, we can start to see which
+            systems the treatment is actually changing, whether that is
+            neurodevelopment, immune response, or other major biological
+            programs.
+          </p>
+          <ul class="tag-row">
+            <li>Transcriptomic modeling</li>
+            <li>Interpretable latent space</li>
+            <li>Treatment disentanglement</li>
+            <li>Biological mechanism</li>
+          </ul>
+          <div class="project-notes">
+            <p>
+              <strong>The jist:</strong> Using latent space to move from raw
+              expression shifts to actual biological mechanism
+            </p>
+          </div>
+          <div class="project-action">
+            <span class="project-view-btn">View Project &rarr;</span>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-header">
+            <p class="project-type">Scientific Interface Tool</p>
+            <h3>3D Brain Slice Visualizer</h3>
+          </div>
+          <div class="project-visual project-visual-slicer" aria-hidden="true">
+            <figure class="project-visual-frame project-visual-frame-3d project-visual-frame-planner">
+              <div class="planner-shot planner-shot--3d">
+                <div class="planner-shot__toolbar">
+                  <span>Atlas standard</span>
+                  <span class="planner-shot__badge">P4 developmental</span>
+                </div>
+                <div class="planner-shot__body">
+                  <div class="planner-shot__viewport planner-shot__viewport--brain">
+                    <img src="./assets/brain-slicer-3d.png" loading="lazy"
+                      alt="Allen Atlas oblique slice planner showing a 3D mouse brain with an angled slicing plane" />
+                  </div>
+                  <aside class="planner-shot__sidebar">
+                    <span class="planner-shot__status">Backend connected</span>
+                    <div class="planner-shot__control-group">
+                      <span>Free orbit</span>
+                      <span>400um</span>
+                    </div>
+                    <div class="planner-shot__control-group">
+                      <span>Thalamocortical</span>
+                      <span>Generate slice</span>
+                    </div>
+                    <div class="planner-shot__meter">
+                      <span>R:3.7mm</span>
+                      <span>C:3.7mm</span>
+                    </div>
+                  </aside>
+                </div>
+              </div>
+              <figcaption>3D slice planning view</figcaption>
+            </figure>
+            <figure class="project-visual-frame project-visual-frame-2d project-visual-frame-preview">
+              <div class="planner-shot planner-shot--2d">
+                <div class="planner-shot__toolbar planner-shot__toolbar--preview">
+                  <span>Slice preview • P4</span>
+                  <div class="planner-shot__chip-row">
+                    <span>Top 0°</span>
+                    <span>Side 0°</span>
+                    <span>Thick 400um</span>
+                  </div>
+                </div>
+                <div class="planner-shot__viewport planner-shot__viewport--slice">
+                  <img src="./assets/brain-slicer-2d.png" loading="lazy"
+                    alt="2D thalamocortical slice profile derived from the selected Allen Atlas slicing plane" />
+                </div>
+              </div>
+              <figcaption>Resulting 2D slice profile</figcaption>
+            </figure>
+          </div>
+          <p>
+            This tool pulls meshes from the Allen Brain Atlas to visualize the
+            exact slicing pattern needed to capture the thalamocortical circuitry
+            we are targeting. The user can rotate the brain, toggle different
+            regions, move the slicer through any angle or direction, and then
+            view the resulting slice in both 3D and 2D. The point is to make
+            slice planning much more precise, so we can stop guessing whether a
+            given angle will actually preserve the structures we need.
+          </p>
+          <ul class="tag-row">
+            <li>Atlas based tooling</li>
+            <li>Oblique slice planning</li>
+            <li>Spatial neuroscience</li>
+            <li>Interactive planning</li>
+          </ul>
+          <div class="project-notes">
+            <p>
+              <strong>The jist:</strong> Turning slice design into something
+              you can actually see, test, and refine before cutting
+            </p>
+          </div>
+          <div class="project-resource-row project-resource-row--inline">
+            <a class="project-resource-link project-resource-link--local" data-local-preview-path="/app"
+              data-local-preview-port="8000"
+              href="#" hidden>Open local slice planner &rarr;</a>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-header">
+            <p class="project-type">Brain Computer Interface</p>
+            <h3>VR Puzzle Game with Adaptive EEG Support</h3>
+          </div>
+          <div class="project-visual project-visual-eeglab" aria-hidden="true">
+            <figure class="project-visual-frame project-visual-frame-eeg">
+              <img src="./assets/eeg-response.png" loading="lazy" alt="Raw EEG recording trace"
+                style="width: 100%; border-radius: 8px;" />
+              <figcaption>Raw recording traces</figcaption>
+            </figure>
+            <figure class="project-visual-frame project-visual-frame-erp">
+              <img src="./assets/eeg-recording.png" loading="lazy" alt="ERP-aligned response view"
+                style="width: 100%; border-radius: 8px;" />
+              <figcaption>ERP-aligned response view</figcaption>
+            </figure>
+          </div>
+          <p>
+            At SCCN, I am working on a VR puzzle based BCI project where we
+            collect EEG and eye tracking data from subjects as they play the
+            game. When the game becomes too difficult, an AI support agent
+            appears and adjusts its help based on the player's brain state in
+            real time. We use EEGLAB during live collection, and the broader
+            goal is to push toward larger and more universal EEG models that can
+            better dissect cognitive state and support richer BCI interaction
+            over time.
+          </p>
+          <ul class="tag-row">
+            <li>Brain state decoding</li>
+            <li>VR interaction</li>
+            <li>EEGLAB in real time</li>
+            <li>Adaptive assistance</li>
+          </ul>
+          <div class="project-notes">
+            <p>
+              <strong>The jist:</strong> Building toward BCI systems that
+              respond when the brain starts to struggle, not after the user
+              already fails
+            </p>
+          </div>
+        </article>
+      </section>
+
+      <section class="section-heading" id="process">
+        <p class="eyebrow">Future</p>
+        <h2>My Future</h2>
+      </section>
+
+      <section class="process-grid">
+        <article>
+          <span>01</span>
+          <h3>Circuit-Resolution Neural Signal Understanding</h3>
+          <p>
+            I've done work with EEG and MEA signals, which tend to capture
+            geographic event potentials more effectively than circuit-level
+            activity. If given the right hardware, I would like to turn
+            precise electrical signals into neurobiological activity to
+            understand what is happening on an electrocellular basis.
+          </p>
+        </article>
+        <article>
+          <span>02</span>
+          <h3>
+            Concepts of Cognition, Learning and Neurobiology Integrated into
+            ML Systems
+          </h3>
+          <p>
+            The most efficient ML systems are based around brain architecture
+            that was formed by millions of years of evolution. There is much
+            to be learned from applying computational neurobiology paradigms to
+            machine learning.
+          </p>
+        </article>
+        <article>
+          <span>03</span>
+          <h3>
+            Reverse the Known Processes - Learn How to Stimulate the Brain to
+            Encode Information
+          </h3>
+          <p>
+            Raw stimulation runs into issues like plasticity and intracellular
+            shifts. BCI scientists will have to learn how to safely stimulate
+            the brain with stimulation that is actually encoded with meaning to
+            that brain. Optogenetic and intracellular manipulation are tactics
+            I can see being used.
+          </p>
+        </article>
+      </section>
+
+      <section class="contact-panel" id="contact">
+        <div>
+          <p class="eyebrow">Contact</p>
+          <h2>Change the future with me</h2>
+          <p>
+            If your interests and goals align with mine, contact me!
+          </p>
+        </div>
+        <div class="contact-links">
+          <a href="https://github.com/akhularv" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://www.linkedin.com/in/akhul-arvind-235615287" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="mailto:akhularvind@gmail.com">Email</a>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="project-layer" id="project-layer" aria-hidden="true">
+    <div class="project-layer__backdrop" id="project-backdrop"></div>
+    <div class="project-layer__window" id="project-window" role="dialog" aria-modal="true"
+      aria-labelledby="modal-title">
+      <button type="button" class="project-layer__close" id="project-close" aria-label="Close project details">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <div class="project-layer__content" id="project-content">
+        <!-- Injected via JS -->
+      </div>
+    </div>
+  </div>
+
+  <script src="./script.js?v=13"></script>
+</body>
+
+</html>
