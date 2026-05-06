@@ -389,6 +389,172 @@
         </article>
       </section>
 
+      <section class="section-heading section-heading--wip" id="works-in-progress">
+        <p class="eyebrow">In progress</p>
+        <h2>Works in Progress</h2>
+        <p class="section-note">
+          Two projects I am actively reshaping right now. One is about making neural decoding honest about uncertainty,
+          and the other is about seeing whether a large EEG model can actually pull out autism relevant structure from
+          messy real data.
+        </p>
+      </section>
+
+      <section class="wip-grid" aria-label="Works in progress">
+        <article class="wip-card wip-card--torchbrain">
+          <div class="wip-card__topline">
+            <p class="project-type">Open Source Contribution</p>
+            <span class="wip-status">Live refactor</span>
+          </div>
+          <div class="project-header">
+            <h3>TorchBrain: Giving POYO a Confidence Model</h3>
+            <p class="wip-thesis">Making cursor decoding say how sure it is, not just where it thinks the hand is going.</p>
+          </div>
+          <div class="wip-stage wip-stage--torchbrain" aria-hidden="true">
+            <div class="torchbrain-pipeline">
+              <div class="torchbrain-zone torchbrain-zone--input">
+                <div class="torchbrain-zone__label">multi-session spikes</div>
+                <div class="torchbrain-raster torchbrain-raster--pink"><span></span></div>
+                <div class="torchbrain-raster torchbrain-raster--gold"><span></span></div>
+                <div class="torchbrain-raster torchbrain-raster--lime"><span></span></div>
+                <div class="torchbrain-raster torchbrain-raster--blue"><span></span></div>
+              </div>
+              <div class="torchbrain-flow">
+                <span></span>
+                <span></span>
+              </div>
+              <div class="torchbrain-zone torchbrain-zone--core">
+                <div class="torchbrain-zone__label">latent decoder</div>
+                <div class="torchbrain-core-card">
+                  <div class="torchbrain-core-card__step">cross-attention compression</div>
+                  <div class="torchbrain-core-card__core">POYO</div>
+                  <div class="torchbrain-core-card__step">self-attention refinement</div>
+                </div>
+              </div>
+              <div class="torchbrain-flow torchbrain-flow--right">
+                <span></span>
+                <span></span>
+              </div>
+              <div class="torchbrain-zone torchbrain-zone--output">
+                <div class="torchbrain-zone__label">uncertainty-aware output</div>
+                <div class="torchbrain-output">
+                  <div class="torchbrain-output__sigma"></div>
+                  <div class="torchbrain-output__curve"></div>
+                  <div class="torchbrain-output__mu"></div>
+                  <div class="torchbrain-output__vector">
+                    <span class="torchbrain-output__vector-axis"></span>
+                    <span class="torchbrain-output__vector-arrow"></span>
+                  </div>
+                </div>
+                <div class="torchbrain-output__legend">
+                  <span>&mu; = predicted velocity</span>
+                  <span>&sigma; = confidence width</span>
+                </div>
+              </div>
+            </div>
+            <p class="wip-stage__caption">The loss moves from plain MSE to Gaussian NLL, so the model has to earn its confidence.</p>
+          </div>
+          <div class="wip-copy">
+            <p>I'm contributing to TorchBrain by modifying POYO so it predicts a full distribution over cursor velocity instead of just one clean velocity output. The original POYO model takes motor cortex spike activity, compresses the spike sequence into latents with cross-attention, refines those latents with self-attention, and then outputs a 2D cursor velocity like <code>(0.5, -0.9)</code>. So basically, it takes a spike storm and turns it into a prediction of where the monkey is moving the cursor.</p>
+            <p>My change is to make that output probabilistic. Instead of only predicting velocity, the model predicts a Gaussian distribution over velocity. The mean is still the actual cursor prediction, and the variance tells us how uncertain the model is. That feels important because neural data is noisy. Some spike patterns are probably very informative, while others are more ambiguous, and I do not think the decoder should act like every prediction comes with the same certainty attached to it.</p>
+            <p>So I'm switching the loss from MSE to Gaussian negative log-likelihood. MSE only cares about how close the velocity prediction is. Gaussian NLL makes the model care about confidence too. If it is wrong and overconfident, it gets hit hard. If the data is noisy and the model expresses uncertainty, that can make sense. But it also cannot just inflate variance forever, because low confidence on accurate predictions still gets penalized. The goal is to make POYO predict cursor velocity while also learning when to trust its own prediction.</p>
+          </div>
+          <ul class="tag-row tag-row--muted">
+            <li>POYO architecture</li>
+            <li>Gaussian NLL</li>
+            <li>motor cortex decoding</li>
+          </ul>
+          <div class="wip-footnote">
+            <strong>The jist:</strong> trying to make neural decoding honest about when it knows where the cursor is
+            going and when it really does not
+          </div>
+        </article>
+
+        <article class="wip-card wip-card--labram">
+          <div class="wip-card__topline">
+            <p class="project-type">Clinical EEG Research Pipeline</p>
+            <span class="wip-status">Paper planning</span>
+          </div>
+          <div class="project-header">
+            <h3>ASD Classification with LaBraM</h3>
+            <p class="wip-thesis">Taking a large EEG model and seeing whether it can separate stable autism-related structure from noisy real recordings.</p>
+          </div>
+          <div class="wip-stage wip-stage--labram" aria-hidden="true">
+            <div class="labram-stage">
+              <div class="labram-pipeline">
+                <div class="labram-block labram-block--wave">
+                  <div class="labram-block__label">raw eeg</div>
+                  <svg viewBox="0 0 240 118" class="labram-waveform">
+                    <path d="M0 28 C18 18, 30 42, 46 32 S74 16, 92 30 S124 46, 144 28 S168 6, 190 28 S220 44, 240 24" />
+                    <path d="M0 56 C16 50, 30 74, 48 60 S78 42, 98 56 S126 78, 148 58 S176 34, 196 56 S224 72, 240 48" />
+                    <path d="M0 84 C18 74, 34 100, 54 88 S82 64, 102 84 S132 108, 152 90 S182 66, 202 84 S228 98, 240 80" />
+                  </svg>
+                </div>
+                <div class="labram-block labram-block--prep">
+                  <div class="labram-block__label">preprocess + decompose</div>
+                  <div class="labram-chip-stack">
+                    <span>bandpass</span>
+                    <span>notch</span>
+                    <span>reref</span>
+                    <span>epoch</span>
+                  </div>
+                  <div class="labram-bands">
+                    <span>delta</span>
+                    <span>theta</span>
+                    <span>alpha</span>
+                    <span>beta</span>
+                    <span>gamma</span>
+                  </div>
+                </div>
+                <div class="labram-block labram-block--tokens">
+                  <div class="labram-block__label">tokenize + encode</div>
+                  <div class="labram-token-grid">
+                    <span></span><span></span><span></span><span></span>
+                    <span></span><span></span><span></span><span></span>
+                    <span></span><span></span><span></span><span></span>
+                  </div>
+                  <div class="labram-transformer">
+                    <span>neural tokenizer</span>
+                    <span>LaBraM encoder</span>
+                  </div>
+                </div>
+                <div class="labram-block labram-block--readout">
+                  <div class="labram-block__label">asd readout</div>
+                  <div class="labram-readout">
+                    <span>ASD vs NT</span>
+                    <span>subgroups</span>
+                    <span>biomarkers</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="wip-insight">
+              <p>The current LaBraM work shows the model can survive real world EEG conditions. I want to push that
+                into a harder neurodevelopmental setting where the signal is much more heterogeneous and much easier to
+                overstate.</p>
+            </div>
+          </div>
+          <div class="wip-copy">
+            <p>I'm building this project around LaBraM because autism EEG deserves better than another tiny benchmark classifier. The plan is to take a large pretrained EEG foundation model and fine-tune it on the SFARI multi-paradigm dataset. I want to see whether the model can find signal that actually holds across different EEG paradigms, subject groups, and clinical variability.</p>
+            <p>That is the part that feels exciting to me. Autism is not one clean biological category, and EEG is already noisy. So if LaBraM can still learn stable patterns across that mess, that says something meaningful.</p>
+            <p>This project is about more than ASD versus neurotypical accuracy. I want to understand where the signal lives, how much of it changes across subgroups, and which parts are consistent enough to trust. It is a way to use foundation models not just for prediction, but for pulling structure out of heterogeneous brain data.</p>
+          </div>
+          <div class="labram-reference-note">
+            <img src="./assets/labram-architecture.png" loading="lazy"
+              alt="LaBraM architecture figure showing the tokenizer and transformer pipeline" />
+            <span>LaBraM architecture reference</span>
+          </div>
+          <ul class="tag-row tag-row--muted">
+            <li>LaBraM foundation model</li>
+            <li>SFARI multi-paradigm EEG</li>
+            <li>cross-paradigm generalization</li>
+          </ul>
+          <div class="wip-footnote">
+            <strong>The jist:</strong> trying to turn a foundation model into something that can tease apart autism
+            related signal, not just label it
+          </div>
+        </article>
+      </section>
+
       <section class="section-heading" id="process">
         <p class="eyebrow">Future</p>
         <h2>My Future</h2>
